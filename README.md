@@ -1,4 +1,18 @@
 # Folium
+## **Pour ceux découvrant le projet depuis GitHub**
+---
+Ce projet a été réalisé dans le cadre de ma première année en BUT Informatique. Ayant obtenu la bonne note de 16.5/20, je laisse l'intégralité du repo à disposition des curieux. 
+
+Le projet n'est pas entièrement terminé, faute de temps. Il manque donc la mise en place d'un déploiement (le seul moyen de faire tourner l'application est de cloner en local et de lancer avec visual studio), une amélioration de certaines vues de l'application et l'implémentation de certaines fonctionnalités. 
+
+Pour autant, ce projet s'est avéré particulièrement complet, enrichissant et suffisamment travaillé pour mériter sa place ici. 
+
+Toutes les informations sur le but de l'application et sa structure sont à retrouver dans ce README et au niveau du Wiki.
+
+Bonne découverte ! 
+
+---
+
 
 ## **Introduction**
 
