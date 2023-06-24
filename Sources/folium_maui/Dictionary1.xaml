@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="folium_maui.Dictionary1">
+
+    <Color x:Key="testcouleur">Red</Color>
+    <Color x:Key="BoutonReseaux">#4795EB</Color>
+    <Color x:Key="BarreMenu">Black</Color>
+    <Color x:Key="BorduresImagesClaire">White</Color>
+    <Color x:Key="CouleurTitresClair">White</Color>
+    <Color x:Key="CouleurTexteClair">White</Color>
+    <Color x:Key="FondBoutonProfil" >#E952EB</Color>
+    <Color x:Key="FondApplication">#042737</Color>
+    
+
+    <Style x:Key="BoutonReseauxSociaux" TargetType="Button">
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource BoutonReseaux}"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="BorderColor" Value="White"/>
+        <Setter Property="ImageSource" Value="{Binding Logo}"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Command" Value="{Binding BoutonCommade}"/>
+        <Setter Property="CommandParameter" Value="{Binding .}"/>
+        <Setter Property="Text" Value="{Binding Type}"/>
+    </Style>
+
+    <Style x:Key="BoutonProfil" TargetType="Button">
+        <Setter Property="Margin" Value="0, 10, 0, 0"/>
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="TextColor" Value="{StaticResource CouleurTexteClair}" />
+        <Setter Property="Text" Value="Voir le profil" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="BorderWidth" Value="2" />
+        <Setter Property="BackgroundColor" Value="{StaticResource FondBoutonProfil}" />
+        <Setter Property="BorderColor" Value="{StaticResource BorduresImagesClaire}" />
+    </Style>
+
+    <Style x:Key="Titre" TargetType="Label">
+        <Setter Property="Text" Value="Les projets : "/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Margin" Value="10, 40, 10, 5"/>
+    </Style>
+
+    <DataTemplate x:Key="HautPageProjet">
+        <VerticalStackLayout>
+
+            <!--Image de présentation-->
+            <Border StrokeShape="Rectangle"
+                    Stroke="{StaticResource BorduresImagesClaire}"
+                    StrokeThickness="3">
+                <Image Source="{Binding Image_principale}"
+                       HeightRequest="400"
+                       Aspect="Fill"/>
+            </Border>
+            
+            <!--Alignement horizontal des deux boutons-->
+            <HorizontalStackLayout Spacing="10"
+                                   Margin="20,30"
+                                   HorizontalOptions="End">
+
+                <!--Bouton pour retourner à la homepage-->
+                <Border Padding="15"
+                        Stroke="{StaticResource BorduresImagesClaire}"
+                        StrokeThickness="3">
+
+                    <Label Text="Retour au Portfolio"
+                           TextColor="{StaticResource CouleurTexteClair}"
+                           FontSize="20"/>
+                </Border>
+
+                <!--Bouton pour éditer le projet-->
+                <Border Padding="15"
+                        Stroke="{StaticResource BorduresImagesClaire}"
+                        StrokeThickness="3">
+
+                    <Label Text="Editer"
+                           TextColor="{StaticResource BorduresImagesClaire}"
+                           FontSize="20"/>
+
+                </Border>
+
+            </HorizontalStackLayout>
+
+            <!--Titre du projet-->
+            <Label  Text="{Binding Nom}"
+                    TextColor="{StaticResource CouleurTexteClair}"
+                    FontSize="24"
+                    HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </DataTemplate>
+ 
+</ResourceDictionary>

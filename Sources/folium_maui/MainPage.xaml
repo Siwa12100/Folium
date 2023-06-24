@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="folium_maui.MainPage">
+
+    <Grid>
+        <!--Déclaration d'une grille de 2 lignes et 2 colonnes-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"  />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="170" />
+            <RowDefinition  Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--Logo de l'application-->
+        <HorizontalStackLayout
+            BackgroundColor="Black"
+            HorizontalOptions="Center"
+            Grid.Row="0"
+            Grid.Column="0"
+            BindingContext="{Binding App}">
+
+            <Image Source="{Binding Logo}" />
+        </HorizontalStackLayout>
+
+        <!--Profil et réseaux sociaux-->
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            BackgroundColor="Black"
+            Grid.Row="0"
+            Grid.Column="1">
+
+            <!--Image de profil, nom & prenom, bouton " Voir le profil"-->
+            <HorizontalStackLayout
+                Margin="10, 0, 30, 5"
+                BackgroundColor="Black"
+                BindingContext="{Binding User}">
+
+                <Border
+                    Stroke="white"
+                    StrokeThickness="4"
+                    StrokeShape="Ellipse"
+                    HorizontalOptions="Center"
+                    Margin="10, 10, 30, 10"
+                    Padding="0, 0, 0, 0">
+                    
+
+                    <Image Source="{Binding ImageProfil}" 
+                           HeightRequest="140"/>
+                </Border>
+
+                <VerticalStackLayout
+                    BackgroundColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Padding="10">
+
+                    <HorizontalStackLayout
+                        Background="Black"
+                        HorizontalOptions="Fill">
+
+                        <!--Nom-->
+                        <Label Text="{Binding Nom}"
+                               FontFamily="Arvo-Regular"
+                               FontSize="35"
+                               Margin=" 10, 10, 4, 10"/>
+
+                        <!--Prenom-->
+                        <Label Text="{Binding Prenom}"
+                               FontFamily="Arvo-Regular"
+                               FontSize="35"
+                               Margin="2, 10, 10, 10"/>
+                    </HorizontalStackLayout>
+
+                    <!--Bouton " voir le profil "-->
+                    <Button Style="{StaticResource BoutonProfil}"
+                            Clicked="chargerPageProfil"/>
+
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <!--Liste des réseaux sociaux-->
+            <HorizontalStackLayout
+                Padding="40, 0, 10, 0"
+                BackgroundColor="Black"
+                BindingContext="{Binding User}">
+
+                <CollectionView ItemsSource="{Binding LReseaux}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                        
+                            <Button Style="{StaticResource BoutonReseauxSociaux}"/>
+                            
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+        </HorizontalStackLayout>
+
+        <!--Master Details-->
+        <ScrollView x:Name="scrollView_a"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalOptions="FillAndExpand">
+        <VerticalStackLayout
+            BackgroundColor="#000C12"
+            Grid.Column="0"
+            Grid.Row="1"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill">
+
+                <Label Style="{StaticResource Titre}"/>
+
+                <BoxView Color="White"
+                         HeightRequest="2" 
+                         WidthRequest="116" 
+                         VerticalOptions="Start" 
+                         HorizontalOptions="Start"
+                         Margin="13, 5, 5, 5"/>
+
+                <CollectionView ItemsSource="{Binding LProjets}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <HorizontalStackLayout>
+                                <Image Source ="fleche_master_detail.png"
+                                       HeightRequest="20"
+                                       WidthRequest="20"
+                                       Margin="7"/>
+                                
+                                <Button Text="{Binding Nom}"
+                                    BackgroundColor="Transparent"
+                                    TextColor="white"
+                                    FontFamily="Arvo-Regular"
+                                    BorderColor="Transparent"
+                                    Command="{Binding BoutonCommande}"
+                                    CommandParameter="{Binding .}"/>
+                            </HorizontalStackLayout>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="Nouveau projet textuel"
+                        WidthRequest="270"
+                        HeightRequest="40"
+                        FontSize="17"
+                        BackgroundColor="#4795EB"
+                        ImageSource="plus_logo.png"
+                        TextColor="White"
+                        BorderColor="White"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Margin="5, 30, 5, 10"
+                        Clicked="creationProjetTextuel"/>
+
+                <Button Text="Nouveau projet graphique"
+                        WidthRequest="270"
+                        HeightRequest="40"
+                        FontSize="17"
+                        BackgroundColor="#4795EB"
+                        ImageSource="plus_logo.png"
+                        TextColor="White"
+                        BorderColor="White"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Margin="5, 30, 5, 10"
+                        Clicked="creationProjetTextuel"/>
+
+                <Button Text="Nouveau projet polyvalent"
+                        WidthRequest="270"
+                        HeightRequest="40"
+                        FontSize="17"
+                        BackgroundColor="#4795EB"
+                        ImageSource="plus_logo.png"
+                        TextColor="White"
+                        BorderColor="White"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Margin="5, 30, 5, 10"
+                        Clicked="creationProjetTextuel"/>
+
+                <Button Text="Trier"
+                        WidthRequest="100"
+                        HeightRequest="50"
+                        FontSize="17"
+                        BackgroundColor="#4795EB"
+                        TextColor="White"
+                        BorderColor="White"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        Margin="5, 400, 5, 10"/>
+
+            <Button Text="Filtrer"
+                    WidthRequest="100"
+                        HeightRequest="50"
+                        FontSize="17"
+                        BackgroundColor="#4795EB"
+                        TextColor="White"
+                        BorderColor="White"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Margin="5,0 , 5, 50"/>
+
+
+            <Button Text="Paramètres"
+                    WidthRequest="200"
+                        HeightRequest="50"
+                        FontSize="17"
+                        BackgroundColor="#4795EB"
+                        TextColor="White"
+                        BorderColor="White"
+                        ImageSource="roue_logo.png"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+        </ScrollView>
+
+        <!--Liste des projets ( partie principale )-->
+        <ScrollView x:Name="scrollView"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalOptions="FillAndExpand">
+
+            <ScrollView.Shadow>
+                <Shadow Brush="#042737"
+                Offset="-4,-4"
+                Radius="40"
+                Opacity="0.5" />
+            </ScrollView.Shadow>
+
+            <VerticalStackLayout
+            Grid.Column="1"
+            Grid.Row="1"
+            BackgroundColor="#042737"
+            HorizontalOptions="Fill">
+
+                <Label Text="Les projets"
+                       FontFamily="Arvo-Regular"
+                   HorizontalOptions="Center"
+                   BackgroundColor="#042737"
+                   FontSize="55"
+                   Margin="10, 10, 10, 40"/>
+
+
+                <CollectionView ItemsSource="{Binding LProjets}">
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                    HeightRequest="400"
+                    WidthRequest="460"
+                    Stroke="white"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 16,16,16,16"
+                    Background="black"
+                    HorizontalOptions="Center"
+                    Margin="10, 10, 20, 10">
+
+                                <Border.Shadow>
+                                    <Shadow Brush="black"
+                            Offset="13,-10"
+                            Radius="40"
+                            Opacity="0.4" />
+                                </Border.Shadow>
+
+                                <VerticalStackLayout>
+
+                                    <Image
+                            Aspect="AspectFill"
+                            WidthRequest="460"
+                            HeightRequest="180"
+                            Source="{Binding Image_principale}"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center" />
+
+                                    <Button Text="{Binding Nom}"
+                                   FontFamily="Arvo-Regular"
+                               FontSize="26"
+                               BackgroundColor="Black"
+                                            TextColor="white"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               Margin="10, 10, 10, 10"
+                               Command="{Binding BoutonCommande}"
+                               CommandParameter="{Binding .}"/>
+
+                                    <Label Text="{Binding Description}"
+                                   FontSize="16"
+                               HeightRequest="90"
+                               WidthRequest="425"
+                               
+                            Margin="0, 1, 0, 10"/>
+
+                                    <HorizontalStackLayout
+                                        HorizontalOptions="Start">
+
+                                        <CollectionView ItemsSource="{Binding Tags}">
+                                            <CollectionView.ItemsLayout>
+                                                <LinearItemsLayout Orientation="Horizontal"/>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border
+                                                        Stroke="white"
+                                                        StrokeThickness="2"
+                                                        StrokeShape="RoundRectangle 16,16,16,16"
+                                                        Padding="30,7"
+                                                        HorizontalOptions="Center"
+                                                        Margin="10, 10, 20, 10">
+
+                                                        <Label Text="{Binding}"
+                                                            FontFamily ="SignikaNegative-Bold"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </HorizontalStackLayout>
+
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                
+
+                
+                <!--Pas utilisé donc mis en invisible-->
+                <HorizontalStackLayout
+                BackgroundColor="#042737"
+                HorizontalOptions = "Center"
+                    IsVisible="false">
+
+                    <Border
+                    HeightRequest="400"
+                    WidthRequest="460"
+                    Stroke="white"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 16,16,16,16"
+                    Background="black"
+                    HorizontalOptions="Center"
+                    Margin="10, 10, 20, 10">
+
+                        <Border.Shadow>
+                            <Shadow Brush="black"
+                            Offset="13,-10"
+                            Radius="40"
+                            Opacity="0.4" />
+                        </Border.Shadow>
+
+                        <VerticalStackLayout>
+
+                            <Image
+                            Aspect="AspectFill"
+                            WidthRequest="460"
+                            HeightRequest="180"
+                            Source="placeholder1.png"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center" />
+
+                            <Label Text="Projet 1"
+                                   FontFamily="Arvo-Regular"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               Margin="10, 10, 10, 10"/>
+
+                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Vestibulum ante ipsum primis in faucibus orci luctus
+                                    et ultrices posuere cubilia Curae; Quisque ac dui mauris.
+                                    Nunc vehicula maximus sapien, eu semper purus rhoncus ut."
+                                   FontFamily="SignikaNegative-Regular"
+                                   FontSize="16"
+                               HeightRequest="90"
+                               WidthRequest="425"
+                               
+                            Margin="0, 1, 0, 10"/>
+
+                            <HorizontalStackLayout
+                                HorizontalOptions="Center">
+
+                                <Border
+                                Stroke="white"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16,16,16,16"
+                                Padding="30,7"
+                                HorizontalOptions="Center"
+                                Margin="10, 10, 20, 10">
+
+                                    <Label Text="Tag1..."
+                                           FontFamily ="SignikaNegative-Bold"/>
+                                </Border>
+
+                                <Border
+                                Stroke="white"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16,16,16,16"
+                                Padding="15,7"
+                                HorizontalOptions="Center"
+                                Margin="10, 10, 20, 10">
+
+                                    <Label Text=" Tag2..."/>
+                                </Border>
+
+                                <Border
+                                Stroke="white"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16,16,16,16"
+                                Padding="15,7"
+                                HorizontalOptions="Center"
+                                Margin="10, 10, 20, 10">
+
+                                    <Label Text=" Tag3..."/>
+                                </Border>
+
+
+
+                            </HorizontalStackLayout>
+
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border
+                    HeightRequest="400"
+                    WidthRequest="460"
+                    Stroke="white"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 16,16,16,16"
+                    Background="black"
+                    HorizontalOptions="Center"
+                    Margin="10, 10, 20, 10">
+
+                        <VerticalStackLayout>
+
+                            <Image
+                            Aspect="AspectFill"
+                            WidthRequest="460"
+                            HeightRequest="180"
+                            Source="placeholder1.png"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center" />
+
+                            <Label Text="Projet 1"
+                                   FontFamily="Arvo-Regular"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               Margin="10, 10, 10, 10"/>
+
+                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Vestibulum ante ipsum primis in faucibus orci luctus
+                                    et ultrices posuere cubilia Curae; Quisque ac dui mauris.
+                                    Nunc vehicula maximus sapien, eu semper purus rhoncus ut."
+                               HeightRequest="90"
+                               WidthRequest="425"
+                               
+                            Margin="0, 1, 0, 10"/>
+
+                            <HorizontalStackLayout
+                                HorizontalOptions="Center">
+
+                                <Border
+                                Stroke="white"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16,16,16,16"
+                                Padding="15,7"
+                                HorizontalOptions="Center"
+                                Margin="10, 10, 20, 10">
+
+                                    <Label Text=" Tag1..."/>
+                                </Border>
+
+                                <Border
+                                Stroke="white"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16,16,16,16"
+                                Padding="15,7"
+                                HorizontalOptions="Center"
+                                Margin="10, 10, 20, 10">
+
+                                    <Label Text=" Tag2..."/>
+                                </Border>
+
+                                <Border
+                                Stroke="white"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16,16,16,16"
+                                Padding="15,7"
+                                HorizontalOptions="Center"
+                                Margin="10, 10, 20, 10">
+
+                                    <Label Text=" Tag3..."/>
+                                </Border>
+
+
+
+                            </HorizontalStackLayout>
+
+
+                        </VerticalStackLayout>
+                    </Border>
+
+
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

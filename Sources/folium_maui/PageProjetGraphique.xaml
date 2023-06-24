@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="folium_maui.PageProjetGraphique"
+             Title="PageProjetGraphique">
+
+    <ScrollView BackgroundColor="{StaticResource FondApplication}">
+
+        <!--Alignement vertical de tous les éléments-->
+        <VerticalStackLayout Margin="50, 20">
+
+            <!--Image de présentation-->
+            <Border Stroke="{StaticResource BorduresImagesClaire}"
+                    StrokeThickness="3"
+                    HeightRequest="400"
+                    WidthRequest="1300"
+                    StrokeShape="RoundRectangle 16,16,16,16"
+                    Background="black"
+                    HorizontalOptions="Center"
+                    Margin="10, 10, 20, 10">
+                <Image Source="{Binding Image_principale}"
+                       HeightRequest="400"
+                       Aspect="Fill"/>
+            </Border>
+
+            <!--Alignement horizontal des deux boutons-->
+            <HorizontalStackLayout Spacing="10"
+                                   Margin="20,30"
+                                   HorizontalOptions="End">
+
+                <Button Text="Retour au PortFolio"
+                        Style="{StaticResource BoutonProfil}"
+                        Clicked="retourAccueil"/>
+
+                <Button Text="Editer"
+                        Style="{StaticResource BoutonProfil}"/>
+
+            </HorizontalStackLayout>
+
+            <!--Titre du projet-->
+            <Label  Text="{Binding Nom}"
+                    TextColor="{StaticResource CouleurTexteClair}"
+                    FontSize="24"
+                    FontFamily="Arvo-Regular"
+                    HorizontalOptions="Center"/>
+
+            <CollectionView ItemsSource="{Binding LBlocs}">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout>
+
+                            <!--Couple Image/Titre-->
+                            <VerticalStackLayout
+                    Spacing="10"
+                    Margin="40">
+
+                                <!--Image-->
+                                <Image Source="{Binding Image1}"
+                               Aspect="AspectFill"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Center"
+                               WidthRequest="460"
+                               HeightRequest="240"/>
+
+                                <!--Titre-->
+                                <Label Text="{Binding Titre1}"
+                               TextColor="White"
+                               FontSize="22"
+                               HorizontalTextAlignment="Center"/>
+
+                             <BoxView Color="Grey"
+                             HeightRequest="3"
+                             WidthRequest="550"
+                             HorizontalOptions="Center"/>
+
+                            </VerticalStackLayout>
+
+                            <!--Couple Image/Titre-->
+                            <VerticalStackLayout
+                    Spacing="10"
+                    Margin="40">
+
+                                <!--Image-->
+                                <Image Source="{Binding Image2}"
+                               Aspect="AspectFill"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Center"
+                               WidthRequest="460"
+                               HeightRequest="240"/>
+
+                                <!--Titre-->
+                                <Label Text="{Binding Titre2}"
+                               TextColor="White"
+                               FontSize="22"
+                               HorizontalTextAlignment="Center"/>
+
+                                <!--Interligne Titre/Description-->
+                                <BoxView Color="Grey"
+                             HeightRequest="3"
+                             WidthRequest="550"
+                             HorizontalOptions="Center"/>
+
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+                
+
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

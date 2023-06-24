@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="folium_maui.PageProjetTextuel"
+             Title="PageProjetTextuel">
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries  Source="DictionnaireDatatemplates.xaml"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    
+    <ScrollView
+        BackgroundColor="{StaticResource  FondApplication}">
+
+        <VerticalStackLayout Margin="50, 20">
+            <!--Image de présentation-->
+            <Border Stroke="{StaticResource BorduresImagesClaire}"
+                    StrokeThickness="3"
+                    HeightRequest="400"
+                    WidthRequest="1300"
+                    StrokeShape="RoundRectangle 16,16,16,16"
+                    Background="black"
+                    HorizontalOptions="Center"
+                    Margin="10, 10, 20, 10">
+                <Image Source="{Binding Image_principale}"
+                       HeightRequest="400"
+                       Aspect="Fill"/>
+            </Border>
+
+            <!--Alignement horizontal des deux boutons-->
+            <HorizontalStackLayout Spacing="10"
+                                   Margin="20,30"
+                                   HorizontalOptions="End">
+
+                <Button Text="Retour au PortFolio"
+                        Style="{StaticResource BoutonProfil}"
+                        Clicked="retourAccueil"/>
+
+                <Button Text="Editer"
+                        Style="{StaticResource BoutonProfil}"/>
+
+            </HorizontalStackLayout>
+
+            <!--Titre du projet-->
+            <Label  Text="{Binding Nom}"
+                    TextColor="{StaticResource CouleurTexteClair}"
+                    FontSize="24"
+                    FontFamily="Arvo-Regular"
+                    HorizontalOptions="Center"/>
+
+            <CollectionView ItemsSource="{Binding LBlocs}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!--Bulle N°1-->
+                        <Border Grid.Row="0"
+                        Stroke="{StaticResource BorduresImagesClaire}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 20 20 20 20"
+                        StrokeDashArray="2"
+                        Padding="5"
+                                Margin="20">
+
+                            <VerticalStackLayout Spacing="10"
+                                         Margin="0,5"
+                                         HorizontalOptions="Start">
+
+                                <!--Titre-->
+                                <Label  Text="{Binding Titre}"
+                            TextColor="White"
+                            FontSize="24"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="Start"
+                            Margin="30,0"/>
+
+                                <!--Interligne Titre/Texte-->
+                                <BoxView Color="Grey"
+                             HeightRequest="3"
+                             WidthRequest="75"
+                                 HorizontalOptions="Start"
+                                 Margin="30,0"/>
+
+                                <!--Texte-->
+                                <Label Text="{Binding Texte}"
+                           TextColor="White"
+                           FontSize="16"
+                           Margin="30, 10"
+                           CharacterSpacing="1"
+                           LineHeight="2"/>
+
+                            </VerticalStackLayout>
+
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+              
+
+                
+
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+
+
+</ContentPage>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="folium_maui.Profil"
+             Title="Profil">
+
+    <ScrollView>
+        
+        <!--Alignement vertical de tous les éléments-->
+        <VerticalStackLayout Margin="50, 20">
+             
+            <!--Bannière de profil-->
+                <Border Stroke="#ff9a8d"
+                        StrokeThickness="4">
+
+                <VerticalStackLayout>
+                    
+                    <!--Image de fond-->
+                    <Image Source="badminton_background_image.png"
+                           HeightRequest="400"
+                           Aspect="Fill"/>
+                    
+                    <!--Interligne Image de fond/Autres éléments-->
+                    <BoxView Color="Grey"
+                             HeightRequest="5"
+                             WidthRequest="1900"
+                             HorizontalOptions="Center"/>
+
+                    <Grid Margin="0,5"
+                          HeightRequest="200"
+                          Padding="20">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="1000"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Image de profil en plus grande-->
+                        <Frame Grid.Column="0"
+                               CornerRadius="125"
+                               BorderColor="black"
+                               IsClippedToBounds="True"
+                               HeightRequest="250"
+                               WidthRequest="250"
+                               Margin="20"
+                               BackgroundColor="white"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+
+                            <Image Source="placeholder2.png"
+                                   Aspect="AspectFill"
+                                   HeightRequest="250"
+                                   Margin="-20"
+                                   WidthRequest="250"/>
+
+                        </Frame>
+
+                        <!--Destiné à être supprimé, utilité: visualiser la zone-->
+                        <!--<BoxView Grid.RowSpan="2"
+                                 Grid.Column="1"
+                                 Grid.Row="0"
+                                 Color="Purple"/>-->
+
+                        <!--NOM Prenom-->
+                        <Label   Grid.Row="0"
+                                 Grid.Column="1"
+                                 WidthRequest="200"
+                                 HorizontalOptions="Start"
+                                 Text="BRUNET Baptiste"
+                                 TextColor="White"
+                                 FontSize="25"/>
+
+                        <!--Destiné à être supprimé, utilité: visualiser la zone-->
+                        <!--<BoxView Grid.RowSpan="2"
+                                 Grid.Column="1"
+                                 Grid.Row="1"
+                                 Color="Blue"/>-->
+
+                        <Border Grid.Column="1"
+                                Grid.Row="1"
+                                StrokeShape="Rectangle"
+                                StrokeThickness="2"
+                                StrokeDashArray="5"
+                                Stroke="#ff9a8d"
+                                VerticalOptions="Fill">
+
+                            <!--Bio-->
+                            <Label   Grid.Row="1"
+                                     Grid.Column="1"
+                                     Text="Bio : Je fais du foot tous les mardi de 25h89 à 28h !"
+                                     TextColor="White"
+                                     FontSize="20"
+                                     Padding="20"/>
+
+                        </Border>
+                        
+                    </Grid>
+                    
+                </VerticalStackLayout> 
+                    
+                </Border>
+            
+            <!--Alignement horizontal des deux boutons-->
+            <HorizontalStackLayout Spacing="10"
+                                   Margin="20,30"
+                                   HorizontalOptions="End">
+                
+                <!--Bouton pour retourner à la homepage-->
+                <Border Padding="15"
+                        Stroke="#ff9a8d"
+                        StrokeThickness="3">
+
+                    <Label Text="Retour au Portfolio"
+                           TextColor="White"
+                           FontSize="20"/>
+
+                </Border>
+                 
+                <!--Bouton pour éditer la Bannière de profil-->
+                <Border Padding="15"
+                        Stroke="#ff9a8d"
+                        StrokeThickness="3">
+
+                    <Label Text="Editer"
+                           TextColor="White"
+                           FontSize="20"/>
+
+                </Border>
+                
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center"
+                                   Spacing="300"
+                                   Margin="100,50">
+
+                <!--Partie "A propos"-->
+                <VerticalStackLayout VerticalOptions="Center"
+                                     WidthRequest="700">
+
+                    <Border Stroke="#ff9a8d"
+                            StrokeThickness="3"
+                            Padding="10">
+
+                        <VerticalStackLayout Spacing="8">
+
+                            <!--Titre-->
+                            <Label Text="A propos"
+                                   TextColor="White"
+                                   FontSize="20"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <!--Interligne Titre/Texte-->
+                            <BoxView Color="Grey"
+                                     HeightRequest="3"
+                                     WidthRequest="600"/>
+
+                            <!--Texte A propos-->
+                            <Label Text="Moi je suis quelqu'un de funky,le groove, la musique et le silence sont pour moi à la fois synonymes et oxymores. C'est genre l'antithèse qui se marie avec l'hypothèse, la thèse des arômes sont plus communément appelés mélodie, je vous l'ai dit j'aime la musique"
+                                   TextColor="White"
+                                   FontSize="18"
+                                   HorizontalTextAlignment="Start"
+                                   Margin="30"/>
+
+                        </VerticalStackLayout>
+                        
+                    </Border>
+                    
+                </VerticalStackLayout>
+
+
+                <!--Partie "Parcours et CV"-->
+                <VerticalStackLayout Spacing="30"
+                                     WidthRequest="700">
+
+                    <!--Parcours-->
+                    <Border Stroke="#ff9a8d"
+                            StrokeThickness="3"
+                            Padding="10">
+
+
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             Spacing="8">
+
+                            <!--Titre-->
+                            <Label Text="Parcours"
+                                   TextColor="White"
+                                   FontSize="20"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <!--Interligne Titre/Liste éléments-->
+                            <BoxView Color="Grey"
+                                     HeightRequest="3"
+                                     WidthRequest="600"/>
+
+                            <!--Exemple 1-->
+                            <Label Text="Stage"
+                                   TextColor="White"
+                                   FontSize="18"/>
+
+                            <!--Exemple 2-->
+                            <Label Text="Travail"
+                                   TextColor="White"
+                                   FontSize="18"/>
+
+                            <!--Exemple 3-->
+                            <Label Text="Stage"
+                                   TextColor="White"
+                                   FontSize="18"/>
+
+                            <!--Exemple 4-->
+                            <Label Text="Stage"
+                                   TextColor="White"
+                                   FontSize="18"/>
+
+                        </VerticalStackLayout>
+                        
+                    </Border>
+
+
+                    <!--CV-->
+                    <Border Stroke="#ff9a8d"
+                            StrokeThickness="3"
+                            Padding="10"
+                            HorizontalOptions="Center">
+
+                        <!--Ligne principale du bouton-->
+                        <Label Text="Voir le CV"
+                               TextColor="White"
+                               FontSize="20"
+                               HorizontalTextAlignment="Center"
+                               Margin="60,0"/>
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+            
+        </VerticalStackLayout>
+        
+    </ScrollView>
+    
+</ContentPage>
