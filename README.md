@@ -19,7 +19,7 @@ Bonne découverte !
 Folium est un projet visant à créer une application de gestion de Portofolio. 
 Le but de l'application est ainsi de pouvoir exposer ses projets, tant techniques qu'artistiques, le tout avec un aspect graphique épuré et agréable à l'oeil. 
 
-Ce projet est réalisé dans le cadre de la SAE 2.01 : Développement d'une application, par Brunet Baptiste et Marcillac Jean. 
+Ce projet est réalisé dans le cadre de la SAE 2.01 : Développement d'une application.
 
 Dans la suite de ce fichier, vous pouvez retrouver toute la documentation permettant de comprendre en détail l'architecture, la structure et la logique misent en oeuvre dans le cadre de la conception de Folium. 
 
